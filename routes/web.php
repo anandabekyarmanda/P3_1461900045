@@ -22,3 +22,4 @@ route::get('/barang/hapus',[barangcontroller::class,'hapus']);
 route::post('/barang/store',[barangcontroller::class,'store']);
 route::get('/barang/edit/{id}',[barangcontroller::class,'edit']);
 route::post('/barang/update',[barangcontroller::class,'update']);
+Route::get('/barang/cari',[BarangController::class,'cari']);
