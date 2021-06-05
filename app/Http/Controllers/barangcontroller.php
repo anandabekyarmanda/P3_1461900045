@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class barangcontroller extends Controller
+class BarangController extends Controller
 {
-    //
+
     public function index()
     {
         $barang = DB::table('barang')->get();
@@ -23,15 +24,24 @@ class barangcontroller extends Controller
     }
     public function update(Request $request)
     {
-        DB::table('barang')->where();
+        DB::table('barang')->where('id',$request->id)->update([
+        'nama' => $request->nama,
+        'harga' => $request->harga,
+        ]);
+        return redirect('/barang');
     }
+    public function hapus($id)
+    {
+        DB::table('barang')->where('id',$id)->delete();
+        return redirect('/barang');
+    }
+
     public function store (Request $request) 
     { 
     DB::table('barang')->insert([
     'id' => $request->id,
     'nama' => $request->nama,
     'harga' => $request->harga,]);
-    
     return redirect('/barang');
     }
     public function cari(Request $request)
